@@ -57,14 +57,14 @@ The dataset is available in the course metioned before (it is also avaiable in t
 
 ```
 =MEDIAN(
-IF(
-    (jobs[job_title_short]=A2)*
-    (jobs[job_country]=country)*
-    (ISNUMBER(SEARCH(type,jobs[job_schedule_type])))*
-    (jobs[salary_year_avg]<>0),
-    jobs[salary_year_avg]
+    IF(
+        (jobs[job_title_short]=A2)*
+        (jobs[salary_year_avg]<>0)*
+        (jobs[job_country]=chosen_country)*(ISNUMBER(SEARCH(chosen_type;jobs[job_schedule_type])));
+        jobs[salary_year_avg]
+    )
 )
-)
+
 ```
 
 - 🔍 **Multi-Criteria Filtering:** Checks job title, country, schedule type, and excludes blank salaries.
@@ -83,7 +83,7 @@ IF(
 #### ⏰ Count of Job Schedule Type
 
 ```
-=FILTER(J2#,(NOT(ISNUMBER(SEARCH("and",J2#))+ISNUMBER(SEARCH(",",J2#))))*(J2#<>0))
+=FILTER(J2#;(NOT(ISNUMBER(SEARCH("and";J2#))+ISNUMBER(SEARCH(",";J2#))))*(J2#<>0))
 ```
 
 - 🔍 **Unique List Generation:** This Excel formula below employs the `FILTER()` function to exclude entries containing "and" or commas, and omit zero values.
@@ -110,4 +110,4 @@ IF(
 
 ## Conclusion
 
-I created this dashboard to showcase insights into salary trends across various data-related job titles. Utilizing data from my Excel course, this dashboard allows users to make informed decisions about their career paths. Exploring the functionalities to understand how location and job type influence salaries. 
+I created this dashboard to showcase insights into salary trends across various data-related job titles. Utilizing data from the Excel course, this dashboard allows users to make informed decisions about their career paths. Exploring the functionalities to understand how location and job type influence salaries is crucial during deciding what career path to choose.
